@@ -7,7 +7,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	public function __construct($cp_id)
 	{
 		$this->api_version = '5.1';
-		
+
 		parent::__construct($cp_id, 'azure-devops', 'Azure Devops');
 		$this->basic_configuration = array(
 			'/fields/System.Title' => '{Bug.message}',
@@ -29,6 +29,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	public function bug_data_replace($bug, $value)
 	{
 		$value = parent::bug_data_replace($bug, $value);
+
 		return $value;
 	}
 
@@ -39,10 +40,10 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		$data = array();
 		foreach ($field_mapped as $key => $value) {
 			$data[] = array(
-				"path" =>$key,
+				"path" => $key,
 				"op" => "add",
 				"from" => null,
-				"value" =>$value
+				"value" => $value
 			);
 		}
 
@@ -53,7 +54,9 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	{
 		global $wpdb;
 		$data = $this->map_fields($bug);
-		$req = Requests::post($this->get_apiurl() . '/wit/workitems/$' . $this->get_issue_type() . '?api-version=' . $this->api_version, array(
+		$url = $this->get_apiurl() . '/wit/workitems/$' . $this->get_issue_type() . '?api-version=' . $this->api_version;
+
+		$req = $this->http_post($url, array(
 			'Authorization' => $this->get_authorization(),
 			'Content-Type' => 'application/json-patch+json'
 		), json_encode($data));
@@ -76,31 +79,46 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 
 		if (property_exists($res, 'fields'))
 		{
-			// $wpdb->insert($wpdb->prefix . 'appq_integration_center_bugs', array(
-			// 	'bug_id' => $bug->id,
-			// 	'integration' => $this->integration['slug']
-			// ));
+			$wpdb->insert($wpdb->prefix . 'appq_integration_center_bugs', array(
+				'bug_id' => $bug->id,
+				'integration' => $this->integration['slug']
+			));
 			if (property_exists($this->configuration, 'upload_media') && intval($this->configuration->upload_media) > 0)
 			{
+				$return = array(
+					'status' => true,
+					'message' => ''
+				);
 				$media =  $wpdb->get_col($wpdb->prepare('SELECT location FROM ' . $wpdb->prefix . 'appq_evd_bug_media WHERE bug_id = %d', $bug->id));
 				foreach ($media as $media_item)
 				{
-					$this->add_attachment($bug, $res->id, $media_item);
+					$res = $this->add_attachment($bug, $res->id, $media_item);
+					if (!$res['status'])
+					{
+						$return['status'] = false;
+						$return['message'] = $return['message'] . ' <br> '. $res['message'];
+					}
+				}
+				
+				if (!$return['status'])
+				{
+					return $return;
 				}
 			}
 
 			return array(
-				'status' => false,
+				'status' => true,
 				'message' => $res
 			);
 		}
+
 		return array(
 			'status' => false,
 			'message' => 'Generic error'
 		);
 	}
-	
-	
+
+
 
 
 	public function add_attachment($bug, $key, $media)
@@ -110,73 +128,70 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		file_put_contents(ABSPATH . 'wp-content/plugins/appq-integration-center/tmp/' . $basename, fopen($media, 'r'));
 
 		$headers = array(
-			"Content-Type: application/octet-stream",
-			"Authorization: " . $this->get_authorization()
+			"Content-Type" => "application/octet-stream",
+			"Authorization" =>  $this->get_authorization()
 		);
-		
-		$ch = curl_init();
-		$options = array(
-			CURLOPT_URL => $this->get_apiurl(). '/wit/attachments?filename='.$basename.'&api-version=' .$this->api_version,
-			CURLOPT_POST => 1,
-			CURLOPT_HTTPHEADER => $headers,
-			CURLOPT_POSTFIELDS => file_get_contents($filename),
-			CURLOPT_RETURNTRANSFER => true
-		);
-		curl_setopt_array($ch, $options);
-		$req = curl_exec($ch);
-		
-		$ret = array(
-			'status' => false,
-			'message' => 'Generic error on attachment ' . $basename
-		);
-		if(!curl_errno($ch))
+
+		$url = $this->get_apiurl(). '/wit/attachments?filename='.$basename.'&api-version=' .$this->api_version;
+
+		$req = $this->http_post($url, $headers, file_get_contents($filename));
+		unlink($filename);
+
+		$req =  json_decode($req->body);
+
+		if (is_null($req))
 		{
-			$info = curl_getinfo($ch);
-			if ($info['http_code'] == 201) {
-				$req =  json_decode($req);
-				$req = Requests::patch($this->get_apiurl() . '/wit/workitems/' . $key . '?api-version=' . $this->api_version, array(
-					'Authorization' => $this->get_authorization(),
-					'Content-Type' => 'application/json-patch+json'
-				), json_encode(array(
-					array(
-				    	"op" => "add",
-					    "path" => "/relations/-",
-					    "value" => array(
-							"rel" => "AttachedFile",
-							"url" => $req->url,
-						)
-					)
-				)));
-				
-				$ret = array(
-					'status' => true,
-					'message' => json_decode($req->body)
-				);
-			} else {
-				$ret['message'] = $ret['message'] . ' - Error ' .  $info['http_code'];
-			}
-		}
-		else
-		{
-			$ret = array(
+			return array(
 				'status' => false,
-				'error' => $errmsg
+				'message' => 'Error on upload media'
 			);
 		}
-		curl_close($ch);
-		unlink($filename);
+
+		$url = $this->get_apiurl() . '/wit/workitems/' . $key . '?api-version=' . $this->api_version;
+		$headers['Content-Type'] = 'application/json-patch+json';
+
+		$req = $this->http_patch($url, $headers, json_encode(array(
+			array(
+				"op" => "add",
+				"path" => "/relations/-",
+				"value" => array(
+					"rel" => "AttachedFile",
+					"url" => $req->url,
+				)
+			)
+		)));
+
+		$req =  json_decode($req->body);
+
+		if (property_exists($req, 'innerException'))
+		{
+			return array(
+				'status' => false,
+				'message' => 'Error on linking uploaded media to workitem - ' .$req->message
+			);
+		}
+		if (property_exists($req, 'fields')) {
+			return array(
+				'status' => true,
+				'message' => json_encode($req)
+			);
+		}
+
+		return array(
+			'status' => false,
+			'message' => 'Generic media error'
+		);
 	}
 
 	public function get_issue_by_id($id)
 	{
 		$id = intval($id);
-		$req = Requests::get($this->get_apiurl() . '/wit/workitems/'. $id .'?api-version=' . $this->api_version, array(
+		$url = $this->get_apiurl() . '/wit/workitems/'. $id .'?api-version=' . $this->api_version;
+
+		$req = $this->http_get($url, array(
 			'Authorization' => $this->get_authorization()
 		));
 
 		return json_decode($req->body);
 	}
-
-
-
 }
