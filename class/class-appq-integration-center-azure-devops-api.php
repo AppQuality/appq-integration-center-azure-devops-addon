@@ -15,25 +15,40 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		);
 	}
 
-
+	
+	/**
+	 * Get the data for authorization
+	 * @method get_authorization
+	 * @date   2019-10-30T14:53:28+010
+	 * @author: Davide Bizzi <clochard>
+	 * @return string	The authorization header content (Basic with base64 encoded USER:KEY - USER empty , KEY apikey).
+	 */
 	public function get_authorization()
 	{
 		return "Basic ".base64_encode(':' .$this->get_token());
 	}
 
+	/**
+	 * Return the issue type
+	 * @method get_issue_type
+	 * @date   2019-10-30T15:05:06+010
+	 * @author: Davide Bizzi <clochard>
+	 * @return string			The issue type
+	 */
 	public function get_issue_type()
 	{
 		return 'Microsoft.VSTS.WorkItemTypes.Issue';
 	}
 
-	public function bug_data_replace($bug, $value)
-	{
-		$value = parent::bug_data_replace($bug, $value);
-
-		return $value;
-	}
-
-
+	
+	/**
+	 * Get mapped field data
+	 * @method map_fields
+	 * @date   2019-10-30T15:20:13+010
+	 * @author: Davide Bizzi <clochard>
+	 * @param  MvcObject                  $bug The bug to map (MvcObject with additional fields on field property)
+	 * @return array                       An array of array with Azure Devops operations
+	 */
 	public function map_fields($bug)
 	{
 		$field_mapped = parent::map_fields($bug);
@@ -50,6 +65,17 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		return $data;
 	}
 
+	/** 
+	 * Send the issue
+	 * @method send_issue
+	 * @date   2019-10-30T15:21:44+010
+	 * @author: Davide Bizzi <clochard>
+	 * @param  MvcObject                  $bug The bug to upload (MvcObject with additional fields on field property)
+	 * @return array 					An associative array {
+	 * 										status: bool,		If uploaded successfully
+	 * 										message: string		The response of the upload or an error message on error 
+	 * 									}
+	 */
 	public function send_issue($bug)
 	{
 		global $wpdb;
@@ -92,7 +118,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 				$media =  $wpdb->get_col($wpdb->prepare('SELECT location FROM ' . $wpdb->prefix . 'appq_evd_bug_media WHERE bug_id = %d', $bug->id));
 				foreach ($media as $media_item)
 				{
-					$res = $this->add_attachment($bug, $res->id, $media_item);
+					$res = $this->add_attachment($res->id, $media_item);
 					if (!$res['status'])
 					{
 						$return['status'] = false;
@@ -120,8 +146,21 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 
 
 
+	
 
-	public function add_attachment($bug, $key, $media)
+	/**
+	 * Add bug media to an issue on jira
+	 * @method add_attachment
+	 * @date   2019-10-30T15:34:39+010
+	 * @author: Davide Bizzi <clochard>
+	 * @param  string                  $key   The issue key
+	 * @param                    $media The url of the media to attach
+	 * @return array 					An associative array {
+	 * 										status: bool,		If uploaded successfully
+	 * 										message: string		The response of the upload or an error message on error 
+	 * 									}
+	 */
+	public function add_attachment( $key, $media)
 	{
 		$basename = basename($media);
 		$filename =  ABSPATH . 'wp-content/plugins/appq-integration-center/tmp/' . $basename;
