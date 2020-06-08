@@ -145,6 +145,82 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	}
 
 
+	/**
+	 * Delete an issue by id on azure
+	 * @method delete_issue
+	 * @date                2020-06-08T10:35:32+020
+	 */
+	public function delete_issue($bugtracker_id) {
+		global $wpdb;
+		if (empty($bugtracker_id)) {
+			return array(
+				'status' => false,
+				'data' => array(
+					'auth_error' => false,
+					'message' => 'Empty bugtracker_id'
+				)
+			);
+		}
+		
+		$url = $this->get_apiurl() . '/wit/workitems/' . $bugtracker_id . '?api-version=' . $this->api_version;
+		
+		
+		$req = $this->http_delete($url, array(
+			'Authorization' => $this->get_authorization(),
+			'Content-Type' => 'application/json-patch+json'
+		));
+		
+		if (empty($req) || !property_exists($req,'status_code')) {
+			return array(
+				'status' => false,
+				'data' => array(
+					'auth_error' => false,
+					'message' => 'Empty Response from Azure'
+				)
+			);
+		} else {
+			$delete_from_db = false;
+			$authorized = false;
+			if ($req->status_code == 204 || $req->status_code == 200) {
+				$delete_from_db = true;
+				$authorized = true;
+			} elseif ($req->status_code == 403) {
+				$delete_from_db = true;
+			}
+		}
+
+		if ($authorized) {
+			$data = array(
+				'auth_error' => false,
+				'message' => 'Successfully deleted the issue'
+			);
+		} else {
+			$data = array(
+				'auth_error' => true,
+				'message' => 'You are not authorized to delete issues on this project'
+			);
+		}
+		
+		if ($delete_from_db) {
+			$wpdb->delete($wpdb->prefix . 'appq_integration_center_bugs',array(
+				'bugtracker_id' => $bugtracker_id
+			));
+			return array(
+				'status' => true,
+				'data' => $data
+			);
+		}
+		
+		
+		return array(
+			'status' => false,
+			'data' => array(
+				'auth_error' => false,
+				'message' => 'There was an error deleting the issue. The status code was ' .$req->status_code
+			)
+		);
+		
+	}
 
 	
 
