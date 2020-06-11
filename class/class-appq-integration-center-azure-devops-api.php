@@ -107,6 +107,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		{
 			$wpdb->insert($wpdb->prefix . 'appq_integration_center_bugs', array(
 				'bug_id' => $bug->id,
+				'bugtracker_id' => $res->id,
 				'integration' => $this->integration['slug']
 			));
 			if (property_exists($this->configuration, 'upload_media') && intval($this->configuration->upload_media) > 0)
