@@ -11,7 +11,8 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		parent::__construct($cp_id, 'azure-devops', 'Azure Devops');
 		$this->basic_configuration = array(
 			'/fields/System.Title' => '{Bug.message}',
-			'/fields/System.Description' => '{Bug.message}'
+			'/fields/System.Description' => '{Bug.message}',
+			'/fields/System.WorkItemType' => $this->get_issue_type()
 		);
 	}
 
@@ -52,6 +53,9 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	public function map_fields($bug)
 	{
 		$field_mapped = parent::map_fields($bug);
+		if (array_key_exists('/fields/System.WorkItemType',$field_mapped)) {
+			$this->basic_configuration['/fields/System.WorkItemType'] = $field_mapped['/fields/System.WorkItemType'];
+		}
 		$data = array();
 		foreach ($field_mapped as $key => $value) {
 			$data[] = array(
@@ -80,7 +84,8 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	{
 		global $wpdb;
 		$data = $this->map_fields($bug);
-		$url = $this->get_apiurl() . '/wit/workitems/$' . $this->get_issue_type() . '?api-version=' . $this->api_version;
+		$issue_type = $this->basic_configuration['/fields/System.WorkItemType'];
+		$url = $this->get_apiurl() . '/wit/workitems/$' . $issue_type . '?api-version=' . $this->api_version;
 
 		$req = $this->http_post($url, array(
 			'Authorization' => $this->get_authorization(),
