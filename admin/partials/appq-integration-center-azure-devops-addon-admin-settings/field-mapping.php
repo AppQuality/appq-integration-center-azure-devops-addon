@@ -1,4 +1,11 @@
-
+<?php 
+$api = new AzureDevOpsRestApi(null);
+foreach ($api->basic_configuration as $key => $value) {
+	if (!in_array($key,array_keys($field_mapping))) {
+		$field_mapping[$key] = $value;
+	}
+}
+?>
 <h3> Field Mapping</h3>
 <div class="row">
 	<div class="col-sm-9 field_mapping">
