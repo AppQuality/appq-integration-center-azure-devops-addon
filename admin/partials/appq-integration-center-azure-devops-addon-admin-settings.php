@@ -39,7 +39,7 @@
 	}
 	$this->partial('settings/field-mapping', array(
 		'field_mapping' => $field_mapping,
-		'additional_fields' => $additional_fields
+		'campaign_id' => $campaign_id
 	)) ?>
 	<div class="row">
 		<button type="button" class="save col-sm-2 offset-sm-10 btn btn-primary">Save</button>
