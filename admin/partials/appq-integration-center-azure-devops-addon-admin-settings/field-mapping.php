@@ -6,26 +6,37 @@ foreach ($api->basic_configuration as $key => $value) {
 	}
 }
 ?>
-<h3> Field Mapping</h3>
 <div class="row">
-	<div class="col-sm-9 field_mapping">
-		<?php foreach ($field_mapping as $key => $value) : ?>
-			<div class="form-group row">
-				<label style="word-break: break-all;" for="field_mapping[<?= $key ?>]" class="col-sm-2 align-self-center text-center"><?= $key ?></label>
-				<textarea name="field_mapping[<?= $key ?>]" class="col-sm-9 form-control" placeholder="Title: {Bug.title}"><?= $value ?></textarea>
-				<button class="col-sm-1 remove btn btn-danger"><span class="fa fa-minus"></span></button>
-			</div>
-		<?php endforeach ?>
-		<button type="button" class="add_field_mapping col-sm-12 btn btn-primary">+</button>
-	</div>
-	<div class="col-sm-3">
-		<div class="row">
-			<h4 class="col-sm-12"> Add fields </h4>
-			<div class="col-sm-12">
-				<?php foreach ($api->mappings as $map => $data) : ?>
-					<p> <?= $map ?> - <?= $data['description'] ?> </p> 
-				<?php endforeach ?>
-			</div>
-		</div>
+	<div class="col-6"><?php printf('<h4 class="title py-3">%s</h4>', __('Field mapping', $this->plugin_name)); ?></div>
+	<div class="col-6 text-right actions mt-2">
+	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#azure-devops_add_mapping_field_modal"><?php _e('New mapping field', $this->plugin_name); ?></button>
 	</div>
 </div>
+<div class="row mb-2">
+    <div class="col-3">
+        <?php printf('<small><strong>%s</strong></small>', __('Name', $this->plugin_name)); ?>
+    </div>
+    <div class="col-7">
+        <?php printf('<small><strong>%s</strong></small>', __('Content', $this->plugin_name)); ?>
+    </div>
+</div>
+<div class="fields-list">
+<?php foreach ($field_mapping as $key => $value){ ?>
+    <div class="row mb-2" data-row="<?= $key ?>">
+        <?php
+        printf(
+            '<div class="col-3">%s</div><div class="col-7">%s</div><div class="col-2 text-right actions">%s</div>',
+            $key,
+			nl2br($value),
+			'<button data-toggle="modal" data-target="#azure-devops_add_mapping_field_modal" type="button" class="btn btn-secondary mr-1 azure-devops-edit-mapping-field" data-key="'.esc_attr($key).'" data-content="'.(isset($value) ? esc_attr($value) : '').'"><i class="fa fa-pencil"></i></button>
+			<button data-toggle="modal" data-target="#azure-devops_delete_mapping_field_modal" type="button" class="btn btn-secondary azure-devops-delete-mapping-field" data-key="'.esc_attr($key).'"><i class="fa fa-trash"></i></button>'
+        );
+        ?>
+    </div>
+<? } ?>
+</div>
+
+<?php
+$this->partial('settings/edit-mapping-field-modal', array());
+$this->partial('settings/delete-mapping-field-modal', array());
+?>
