@@ -13,7 +13,7 @@
           <div class="form-group">
             <?php
             printf('<label for="custom_mapping_name">%s</label>', __('Name', $this->plugin_name));
-            printf('<input type="text" class="form-control" name="name" id="custom_mapping_name" placeholder="%s">', __('summary', $this->plugin_name));
+            printf('<input type="text" class="form-control" name="name" id="custom_mapping_name" placeholder="%s">', __('/fields/System.Title', $this->plugin_name));
             ?>
           </div>
           <div class="form-group">
