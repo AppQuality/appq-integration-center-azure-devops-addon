@@ -53,7 +53,6 @@
 			  name: "nonce",
 			  value: appq_ajax.nonce,
 			});
-			console.log(data);
 			jQuery.ajax({
 				type: "post",
 				dataType: "json",
