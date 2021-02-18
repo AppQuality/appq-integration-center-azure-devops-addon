@@ -32,31 +32,139 @@
 			})
 			proto.insertBefore($(this))
 		})
-		$('#azure_devops_settings .save').click(function(){
+
+
+
+
+		$('#azure-devops_tracker_settings').submit(function(e){
+			e.preventDefault();
 			var srcParams = new URLSearchParams(window.location.search)
 			var cp_id = srcParams.has('id') ? srcParams.get('id') : -1
-			var button = $(this)
-			var text = button.text()
-			var data = $('#azure_devops_settings').serializeArray()
+			var data = $('#azure-devops_tracker_settings').serializeArray();
 			data.push({
 				'name' : 'action',
 				'value': 'appq_azure_devops_edit_settings'
-			})
+			});
 			data.push({
 				'name' : 'cp_id',
 				'value': cp_id
-			})
-			button.text("")
-			button.append('<span class="fa fa-spinner fa-spin"></span>')
+			});
+			data.push({
+			  name: "nonce",
+			  value: appq_ajax.nonce,
+			});
 			jQuery.ajax({
 				type: "post",
 				dataType: "json",
-				url: custom_object.ajax_url,
+				url: appq_ajax.url,
 				data: data,
 				success: function(msg) {
-			 		button.text(text)
+					toastr.success('Tracker settings updated!');
+					location.reload();
 				}
 			});
 		})
+		$('#azure-devops_mapping_field').submit(function(e){
+			e.preventDefault();
+			var field_list_wrap = $('.fields-list');
+			var srcParams = new URLSearchParams(window.location.search)
+			var cp_id = srcParams.has('id') ? srcParams.get('id') : -1
+			var data = $('#azure-devops_mapping_field').serializeArray();
+			
+			var submit_btn = $(this).find('[type="submit"]');
+			var submit_btn_html = submit_btn.html();
+			submit_btn.html('<i class="fa fa-spinner fa-spin"></i>');
+			data.push({
+				'name' : 'action',
+				'value': 'appq_azure_edit_mapping_fields'
+			});
+			data.push({
+				'name' : 'cp_id',
+				'value': cp_id
+			});
+			data.push({
+			  name: "nonce",
+			  value: appq_ajax.nonce,
+			});
+			jQuery.ajax({
+				type: "post",
+				dataType: "json",
+				url: appq_ajax.url,
+				data: data,
+				success: function(msg) {
+					toastr.success('Field added!');
+					submit_btn.html(submit_btn_html);
+					field_list_wrap.find(`[data-row="${msg.data.key}"]`).remove();
+					field_list_wrap.prepend(`<div class="row mb-2" data-row="${msg.data.key}">
+					<div class="col-3">${msg.data.key}</div>
+					<div class="col-7">${msg.data.content}</div>
+					<div class="col-2 text-right actions">
+					<button data-toggle="modal" data-target="#azure-devops_add_mapping_field_modal" type="button" class="btn btn-secondary mr-1 edit-mapping-field" data-key="${msg.data.key}" data-content="${msg.data.content}"><i class="fa fa-pencil"></i></button>
+					<button data-toggle="modal" data-target="#azure-devops_delete_mapping_field_modal" type="button" class="btn btn-secondary delete-mapping-field" data-key="${msg.data.key}"><i class="fa fa-trash"></i></button>
+					</div>    
+					</div>`);
+					$('#azure-devops_add_mapping_field_modal').modal('hide');
+				}
+			});
+		})
+		$(document).on('click', '[data-target="#azure-devops_add_mapping_field_modal"]', function(){
+			var modal_id = $(this).attr('data-target');
+			var input_name = $(modal_id).find('input[name="name"]');
+			var input_value = $(modal_id).find('textarea[name="value"]');
+
+			input_name.val('');
+			input_value.val('');
+
+			var key = $(this).attr('data-key');
+			if(!key) return;
+			var content = $(this).attr('data-content');
+
+			input_name.val(key);
+			input_value.val(content);
+		})
+		$(document).on('click', '#azure-devops_fields_settings .azure-devops-delete-mapping-field', function(){
+			var key = $(this).attr('data-key');
+			var modal_id = $(this).attr('data-target');
+			$(modal_id).find('input[name="field_key"]').val(key);
+		})
+		$('#azure-devops_delete_field').submit(function(e){
+			e.preventDefault();
+			var field_list_wrap = $('.fields-list');
+			var srcParams = new URLSearchParams(window.location.search)
+			var cp_id = srcParams.has('id') ? srcParams.get('id') : -1
+			var data = $('#azure-devops_delete_field').serializeArray();
+			var submit_btn = $(this).find('[type="submit"]');
+			var submit_btn_html = submit_btn.html();
+			submit_btn.html('<i class="fa fa-spinner fa-spin"></i>');
+			data.push({
+				'name' : 'action',
+				'value': 'appq_azure_delete_mapping_fields'
+			});
+			data.push({
+				'name' : 'cp_id',
+				'value': cp_id
+			});
+			data.push({
+			  name: "nonce",
+			  value: appq_ajax.nonce,
+			});
+			jQuery.ajax({
+				type: "post",
+				dataType: "json",
+				url: appq_ajax.url,
+				data: data,
+				success: function(msg) {
+					toastr.success('Field deleted!');
+					submit_btn.html(submit_btn_html);
+					field_list_wrap.find(`[data-row="${msg.data}"]`).remove();
+					$('#azure-devops_delete_mapping_field_modal').modal('toggle');
+				}
+			});
+		})
+
+
+
+
+
 	})
 })(jQuery);
