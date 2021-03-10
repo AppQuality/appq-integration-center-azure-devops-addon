@@ -33,7 +33,7 @@ foreach ($api->basic_configuration as $key => $value) {
         );
         ?>
     </div>
-<? } ?>
+<?php } ?>
 </div>
 
 <?php
