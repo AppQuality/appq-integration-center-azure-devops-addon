@@ -38,8 +38,7 @@
 
 		$('#azure-devops_tracker_settings').submit(function(e){
 			e.preventDefault();
-			var srcParams = new URLSearchParams(window.location.search)
-			var cp_id = srcParams.has('id') ? srcParams.get('id') : -1
+			var cp_id = $('#campaign_id').val()
 			var data = $('#azure-devops_tracker_settings').serializeArray();
 			data.push({
 				'name' : 'action',
@@ -67,8 +66,7 @@
 		$('#azure-devops_mapping_field').submit(function(e){
 			e.preventDefault();
 			var field_list_wrap = $('.fields-list');
-			var srcParams = new URLSearchParams(window.location.search)
-			var cp_id = srcParams.has('id') ? srcParams.get('id') : -1
+			var cp_id = $('#campaign_id').val()
 			var data = $('#azure-devops_mapping_field').serializeArray();
 			
 			var submit_btn = $(this).find('[type="submit"]');
@@ -130,8 +128,7 @@
 		$('#azure-devops_delete_field').submit(function(e){
 			e.preventDefault();
 			var field_list_wrap = $('.fields-list');
-			var srcParams = new URLSearchParams(window.location.search)
-			var cp_id = srcParams.has('id') ? srcParams.get('id') : -1
+			var cp_id = $('#campaign_id').val()
 			var data = $('#azure-devops_delete_field').serializeArray();
 			var submit_btn = $(this).find('[type="submit"]');
 			var submit_btn_html = submit_btn.html();
