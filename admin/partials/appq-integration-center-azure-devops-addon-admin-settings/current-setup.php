@@ -38,21 +38,13 @@ $project  = isset( json_decode( $campaign->bugtracker->endpoint )->project ) ? j
     <div class="col">
         <div>
 			<?php
-			printf( '<h6 class="text-secondary">%s</h6>', __( 'Project ID', $this->plugin_name ) );
-			?>
-            <span class="text-primary"><?= $project ?></span>
-        </div>
-    </div>
-    <div class="col">
-        <div>
-			<?php
 			printf( '<h6 class="text-secondary">%s</h6>', __( 'Media upload', $this->plugin_name ) );
 			$madiaUploadText = isset( $campaign->bugtracker->upload_media ) && $campaign->bugtracker->upload_media == 1 ? __( 'Yes', $this->plugin_name ) : __( 'No', $this->plugin_name );
 			?>
             <span class="text-primary"><?= $madiaUploadText ?></span>
         </div>
     </div>
-    <div class="col d-flex-vertical-center">
+    <div class="col d-flex-vertical-center justify-content-end">
         <div class="btn-group mr-1" role="group">
 			<?php if ( isset( $campaign->bugtracker->default_bug ) ): ?>
 
