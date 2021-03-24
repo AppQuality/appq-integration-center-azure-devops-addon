@@ -9,7 +9,7 @@ foreach ($api->basic_configuration as $key => $value) {
 <div class="row">
 	<div class="col-6"><?php printf('<h4 class="title py-3">%s</h4>', __('Field mapping', $this->plugin_name)); ?></div>
 	<div class="col-6 text-right actions mt-2">
-	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#azure-devops_add_mapping_field_modal"><?php _e('New mapping field', $this->plugin_name); ?></button>
+	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#azure-devops_add_mapping_field_modal"><?php _e('Add new field mapping', $this->plugin_name); ?></button>
 	</div>
 </div>
 <div class="row mb-2">
