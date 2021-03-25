@@ -14,10 +14,16 @@ foreach ($api->basic_configuration as $key => $value) {
 </div>
 <div class="row mb-2">
     <div class="col-3">
-        <?php printf('<small><strong>%s</strong></small>', __('Name', $this->plugin_name)); ?>
+			<small>
+				<strong><?= __('Name', $this->plugin_name); ?></strong>
+				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)', $this->plugin_name) ?>"></i>
+			</small>
     </div>
     <div class="col-7">
-        <?php printf('<small><strong>%s</strong></small>', __('Content', $this->plugin_name)); ?>
+			<small>
+				<strong><?= __('Content', $this->plugin_name); ?></strong>
+				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('The content you want to set the azure devops field to. {Bug.*} fields will be replaced with the bug data', $this->plugin_name) ?>"></i>
+			</small>
     </div>
 </div>
 <div class="fields-list">
