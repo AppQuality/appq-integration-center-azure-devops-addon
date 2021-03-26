@@ -27,6 +27,14 @@ function appq_azure_devops_edit_settings()
 		'integration' => 'azure-devops',
 		'campaign_id' => $cp_id,
 	));
+	
+	$sql = 'UPDATE '.$wpdb->prefix .'appq_integration_center_config
+	SET is_active = 0
+	WHERE campaign_id = %d AND integration != "azure-devops";';
+	$sql = $wpdb->prepare($sql,$cp_id);
+	
+	$wpdb->query($sql);
+	
 	wp_send_json_success('ok');
 }
 
