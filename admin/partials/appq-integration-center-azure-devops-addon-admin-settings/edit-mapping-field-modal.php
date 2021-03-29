@@ -1,7 +1,7 @@
 <?php $api = new IntegrationCenterRestApi($campaign_id, null, null); ?>
 
 <!-- Modal -->
-<div class="modal" style="z-index: 99999;" id="azure-devops_add_mapping_field_modal" tabindex="-1" role="dialog" aria-labelledby="add_mapping_field_modal_label" aria-hidden="true">
+<div class="modal" style="z-index: 99999;" id="add_mapping_field_modal" tabindex="-1" role="dialog" aria-labelledby="add_mapping_field_modal_label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div style="z-index: 99999;" class="modal-content">
       <div class="modal-header">

@@ -90,18 +90,17 @@
 				url: appq_ajax.url,
 				data: data,
 				success: function(msg) {
+					
 					toastr.success('Field added!');
 					submit_btn.html(submit_btn_html);
-					field_list_wrap.find(`[data-row="${msg.data.key}"]`).remove();
-					field_list_wrap.prepend(`<div class="row mb-2" data-row="${msg.data.key}">
-					<div class="col-3">${msg.data.key}</div>
-					<div class="col-7">${msg.data.content}</div>
-					<div class="col-2 text-right actions">
-					<button data-toggle="modal" data-target="#azure-devops_add_mapping_field_modal" type="button" class="btn btn-secondary mr-1 edit-mapping-field" data-key="${msg.data.key}" data-content="${msg.data.content}"><i class="fa fa-pencil"></i></button>
-					<button data-toggle="modal" data-target="#azure-devops_delete_mapping_field_modal" type="button" class="btn btn-secondary delete-mapping-field" data-key="${msg.data.key}"><i class="fa fa-trash"></i></button>
-					</div>    
-					</div>`);
-					$('#azure-devops_add_mapping_field_modal').modal('hide');
+					var template = wp.template("field_mapping_row");
+					var output = template(msg.data);
+					if ($('[data-row="'+msg.data.key+'"]').length) {
+						$('[data-row="'+msg.data.key+'"]').replaceWith(output)
+					} else {
+						field_list_wrap.prepend(output);
+					}
+					$('#add_mapping_field_modal').modal('hide');
 				}
 			});
 		})
