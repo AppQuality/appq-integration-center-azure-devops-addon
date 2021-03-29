@@ -1,18 +1,17 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: appq-integration-center-azure-devops-addon\n"
 "POT-Creation-Date: 2021-03-29 15:49+0200\n"
-"PO-Revision-Date: 2021-03-29 15:44+0200\n"
+"PO-Revision-Date: 2021-03-29 15:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: AppQuality\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: en\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_x;_n;_e\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -20,79 +19,94 @@ msgstr ""
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:19
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:18
 msgid "Endpoint"
-msgstr ""
+msgstr "Endpoint"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:28
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:24
 msgid "Authentication"
-msgstr ""
+msgstr "Autenticazione"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:41
 msgid "Media upload"
-msgstr ""
+msgstr "Carica Media"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:42
 msgid "Yes"
-msgstr ""
+msgstr "Sì"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:42
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/delete-mapping-field-modal.php:6
 msgid "Delete this field?"
-msgstr ""
+msgstr "Elimina questo campo?"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/delete-mapping-field-modal.php:19
 msgid "Delete field"
-msgstr ""
+msgstr "Elimina campo"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/delete-mapping-field-modal.php:23
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:37
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:8
+msgid "Add / Edit mapping field"
+msgstr "Aggiungi/modifica mapping campo"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:19
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:18
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:20
 msgid "/fields/System.Title"
-msgstr ""
+msgstr "/fields/System.Title"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:25
 msgid "Target field"
-msgstr ""
+msgstr "Nuovo campo"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:26
 msgid "*Type*: {Bug.type} ..."
-msgstr ""
+msgstr "*Tipo*: {Bug.type} ..."
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:33
 msgid "Save field"
-msgstr ""
+msgstr "Salva campo"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:10
 msgid "Field mapping"
-msgstr ""
+msgstr "Mapping campi"
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:12
+msgid "Add new field mapping"
+msgstr "Aggiungi nuovo mapping campi"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:19
-msgid "Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)"
+msgid ""
+"Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)"
 msgstr ""
+"Nome del campo in Azure DevOps. Utilizza lo slash per i sottocampi (e.g. /"
+"fields/System.State)"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:24
 msgid "Content"
-msgstr ""
+msgstr "Contenuto"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:25
-msgid "The content you want to set the azure devops field to. {Bug.*} fields will be replaced with the bug data"
+msgid ""
+"The content you want to set the azure devops field to. {Bug.*} fields will "
+"be replaced with the bug data"
 msgstr ""
+"Il contenuto da settare nel campo Jira. I {Bug.*} verranno sostituiti con i "
+"dati del bug che stai caricando"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:19
 msgid "https://yourcompanyname.atlassian.com"
-msgstr ""
+msgstr "https://yourcompanyname.atlassian.com"
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:25
 msgid "PERSONAL ACCESS TOKEN"
-msgstr ""
+msgstr "PERSONAL ACCESS TOKEN"
