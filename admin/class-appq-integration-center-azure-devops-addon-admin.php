@@ -26,10 +26,10 @@ class Appq_Integration_Center_Azure_Devops_Addon_Admin {
 	 * The ID of this plugin.
 	 *
 	 * @since    1.0.0
-	 * @access   private
+	 * @access   public
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
-	private $plugin_name;
+	public $plugin_name;
 
 	/**
 	 * The version of this plugin.
@@ -94,7 +94,8 @@ class Appq_Integration_Center_Azure_Devops_Addon_Admin {
 		$integrations[] = array_merge(
 			$this->integration,
 			array(
-				'class' => $this
+				'class' => $this,
+				'visible_to_customer' => true
 			)
 		);
 		return $integrations;

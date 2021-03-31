@@ -55,6 +55,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		$field_mapped = parent::map_fields($bug);
 		if (array_key_exists('/fields/System.WorkItemType',$field_mapped)) {
 			$this->basic_configuration['/fields/System.WorkItemType'] = $field_mapped['/fields/System.WorkItemType'];
+			unset($field_mapped['/fields/System.WorkItemType']);
 		}
 		$data = array();
 		foreach ($field_mapped as $key => $value) {
@@ -122,14 +123,25 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 					'message' => ''
 				);
 				$media =  $wpdb->get_col($wpdb->prepare('SELECT location FROM ' . $wpdb->prefix . 'appq_evd_bug_media WHERE bug_id = %d', $bug->id));
+				
+				
+				$media_error = false;
+				
 				foreach ($media as $media_item)
 				{
-					$res = $this->add_attachment($res->id, $media_item);
-					if (!$res['status'])
+					$result = $this->add_attachment($res->id, $media_item);
+					if (!$result['status'])
 					{
-						$return['status'] = false;
-						$return['message'] = $return['message'] . ' <br> '. $res['message'];
+						$media_error = $return['message'] . ' <br> '. $result['message'];
 					}
+				}
+				
+				if ($media_error) {
+					return array(
+						'status' => true,
+						'warning' => $media_error,
+						'message' => $res
+					);
 				}
 				
 				if (!$return['status'])

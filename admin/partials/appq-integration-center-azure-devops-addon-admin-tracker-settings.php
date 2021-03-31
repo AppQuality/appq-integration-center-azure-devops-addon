@@ -22,7 +22,7 @@
     <div class="form-group">
         <?php
         printf('<label for="azure_devops_apikey">%s</label>', __('Authentication', $this->plugin_name));
-        printf('<input type="text" class="form-control" name="azure_devops_apikey" id="azure_devops_apikey" placeholder="%s" value="%s">', __('email@adress.com:APITOKEN', $this->plugin_name), !empty($config) ? $config->apikey : '');
+        printf('<input type="text" class="form-control" name="azure_devops_apikey" id="azure_devops_apikey" placeholder="%s" value="%s">', __('PERSONAL ACCESS TOKEN', $this->plugin_name), !empty($config) ? $config->apikey : '');
         ?>
     </div>
 </form>
