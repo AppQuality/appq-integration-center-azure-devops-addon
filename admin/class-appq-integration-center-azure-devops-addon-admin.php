@@ -94,8 +94,7 @@ class Appq_Integration_Center_Azure_Devops_Addon_Admin {
 		$integrations[] = array_merge(
 			$this->integration,
 			array(
-				'class' => $this,
-				'visible_to_customer' => true
+				'class' => $this
 			)
 		);
 		return $integrations;
