@@ -4,7 +4,7 @@
 	$(document).ready(function() {
 		$('#azure_devops_settings .field_mapping .remove').click(function(){
 			$(this).parent().remove()
-		})
+		});
 		$('#azure_devops_settings .add_field_mapping').click(function(){
 			var button = $(this)
 			button.attr('disabled','disabled')
@@ -31,11 +31,7 @@
 				button.removeAttr('disabled')
 			})
 			proto.insertBefore($(this))
-		})
-
-
-
-
+		});
 		$('#azure-devops_tracker_settings').submit(function(e){
 			e.preventDefault();
 			var cp_id = $('#campaign_id').val()
@@ -62,7 +58,7 @@
 					location.reload();
 				}
 			});
-		})
+		});
 		$('#azure-devops_mapping_field').submit(function(e){
 			e.preventDefault();
 			var field_list_wrap = $('.fields-list');
@@ -103,7 +99,7 @@
 					$('#add_mapping_field_modal').modal('hide');
 				}
 			});
-		})
+		});
 		$(document).on('click', '[data-target="#azure-devops_add_mapping_field_modal"]', function(){
 			var modal_id = $(this).attr('data-target');
 			var input_name = $(modal_id).find('input[name="name"]');
@@ -118,12 +114,12 @@
 
 			input_name.val(key);
 			input_value.val(content);
-		})
-		$(document).on('click', '#azure-devops_fields_settings .azure-devops-delete-mapping-field', function(){
+		});
+		$(document).on('click', '#azure-devops_fields_settings .delete-mapping-field', function(){
 			var key = $(this).attr('data-key');
 			var modal_id = $(this).attr('data-target');
 			$(modal_id).find('input[name="field_key"]').val(key);
-		})
+		});
 		$('#azure-devops_delete_field').submit(function(e){
 			e.preventDefault();
 			var field_list_wrap = $('.fields-list');
@@ -153,14 +149,9 @@
 					toastr.success('Field deleted!');
 					submit_btn.html(submit_btn_html);
 					field_list_wrap.find(`[data-row="${msg.data}"]`).remove();
-					$('#azure-devops_delete_mapping_field_modal').modal('toggle');
+					$('#delete_mapping_field_modal').modal('toggle');
 				}
 			});
-		})
-
-
-
-
-
-	})
+		});
+	});
 })(jQuery);
