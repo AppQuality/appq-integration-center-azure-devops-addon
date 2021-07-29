@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal" style="z-index: 99999;" id="azure-devops_delete_mapping_field_modal" tabindex="-1" role="dialog" aria-labelledby="reset_tracker_settings" aria-hidden="true">
+<div class="modal" style="z-index: 99999;" id="delete_mapping_field_modal" tabindex="-1" role="dialog" aria-labelledby="reset_tracker_settings" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div style="z-index: 99999;" class="modal-content">
             <div class="modal-header">
@@ -15,7 +15,7 @@
                         <div class="row mt-2">
                             <div class="col-6 col-lg-4 offset-lg-2 text-right">
                                 <?php printf(
-                                    '<button type="submit" id="delete_mapping_field" class="btn btn-primary confirm">%s</button>',
+                                    '<button type="submit" id="azure-devops_delete_mapping_field" class="btn btn-primary confirm">%s</button>',
                                     __('Delete field', $this->plugin_name)
                                 ); ?>
                             </div>
