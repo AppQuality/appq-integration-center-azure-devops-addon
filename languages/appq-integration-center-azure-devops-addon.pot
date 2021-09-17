@@ -2,20 +2,35 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: appq-integration-center-azure-devops-addon\n"
-"POT-Creation-Date: 2021-03-29 15:49+0200\n"
+"POT-Creation-Date: 2021-09-17 16:01+0200\n"
 "PO-Revision-Date: 2021-03-29 15:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: AppQuality\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_x;_n;_e\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:57
+#: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
+msgid "Tracker settings updated!"
+msgstr ""
+
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:90
+#: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
+msgid "Field added!"
+msgstr ""
+
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:149
+#: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
+msgid "Field deleted!"
+msgstr ""
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:19
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:18
@@ -52,6 +67,10 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:8
+msgid "Add / Edit mapping field"
+msgstr ""
+
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:19
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:18
 msgid "Name"
@@ -77,6 +96,10 @@ msgstr ""
 msgid "Field mapping"
 msgstr ""
 
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:12
+msgid "Add new field mapping"
+msgstr ""
+
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:19
 msgid "Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)"
 msgstr ""
@@ -95,4 +118,44 @@ msgstr ""
 
 #: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:25
 msgid "PERSONAL ACCESS TOKEN"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:101
+msgid "Error on upload bug"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:161
+msgid "Generic error"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:178
+msgid "Empty bugtracker_id"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:196
+msgid "Empty Response from Azure"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:213
+msgid "Successfully deleted the issue"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:218
+msgid "You are not authorized to delete issues on this project"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:237
+msgid "There was an error deleting the issue. The status code was"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:279
+msgid "Error on upload media"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:303
+msgid "Error on linking uploaded media to workitem"
+msgstr ""
+
+#: class/class-appq-integration-center-azure-devops-api.php:315
+msgid "Generic media error"
 msgstr ""
