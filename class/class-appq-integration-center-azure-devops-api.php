@@ -98,7 +98,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		if (is_null($res)) {
 			return array(
 				'status' => false,
-				'message' => 'Error on upload bug'
+				'message' => __('Error on upload bug', "appq-integration-center-azure-devops-addon")
 			);
 		}
 
@@ -158,7 +158,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 
 		return array(
 			'status' => false,
-			'message' => 'Generic error'
+			'message' => __('Generic error', "appq-integration-center-azure-devops-addon")
 		);
 	}
 
@@ -175,7 +175,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 				'status' => false,
 				'data' => array(
 					'auth_error' => false,
-					'message' => 'Empty bugtracker_id'
+					'message' => __('Empty bugtracker_id', "appq-integration-center-azure-devops-addon")
 				)
 			);
 		}
@@ -193,7 +193,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 				'status' => false,
 				'data' => array(
 					'auth_error' => false,
-					'message' => 'Empty Response from Azure'
+					'message' => __('Empty Response from Azure', "appq-integration-center-azure-devops-addon")
 				)
 			);
 		} else {
@@ -210,12 +210,12 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		if ($authorized) {
 			$data = array(
 				'auth_error' => false,
-				'message' => 'Successfully deleted the issue'
+				'message' => __('Successfully deleted the issue', "appq-integration-center-azure-devops-addon")
 			);
 		} else {
 			$data = array(
 				'auth_error' => true,
-				'message' => 'You are not authorized to delete issues on this project'
+				'message' => __('You are not authorized to delete issues on this project', "appq-integration-center-azure-devops-addon")
 			);
 		}
 		
@@ -234,7 +234,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 			'status' => false,
 			'data' => array(
 				'auth_error' => false,
-				'message' => 'There was an error deleting the issue. The status code was ' .$req->status_code
+				'message' => __('There was an error deleting the issue. The status code was', "appq-integration-center-azure-devops-addon") . ' ' . $req->status_code
 			)
 		);
 		
@@ -276,7 +276,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		{
 			return array(
 				'status' => false,
-				'message' => 'Error on upload media'
+				'message' => __('Error on upload media', "appq-integration-center-azure-devops-addon")
 			);
 		}
 
@@ -300,7 +300,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		{
 			return array(
 				'status' => false,
-				'message' => 'Error on linking uploaded media to workitem - ' .$req->message
+				'message' => __('Error on linking uploaded media to workitem', "appq-integration-center-azure-devops-addon") . ' - ' .$req->message
 			);
 		}
 		if (property_exists($req, 'fields')) {
@@ -312,7 +312,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 
 		return array(
 			'status' => false,
-			'message' => 'Generic media error'
+			'message' => __('Generic media error', "appq-integration-center-azure-devops-addon")
 		);
 	}
 

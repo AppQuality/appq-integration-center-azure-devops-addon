@@ -13,13 +13,13 @@
 				e.preventDefault()
 				var key = $(this).parent().find('[name="key"]').val()
 				var value = $(this).parent().find('[name="value"]').val()
-				
-				var new_input = $(`
-				<div class="form-group row">
-					<label class="col-sm-2"></label>
-					<textarea class="col-sm-9 form-control" placeholder="Title: {Bug.title}"></textarea>
-					<button class="col-sm-1 remove btn btn-danger">-</button>
-				</div>`)
+				var input_html =
+					'<div class="form-group row">' +
+						'<label class="col-sm-2"></label>' +
+							'<textarea class="col-sm-9 form-control" placeholder="Title: {Bug.title}"></textarea>' +
+						'<button class="col-sm-1 remove btn btn-danger">-</button>' +
+					'</div>';
+				var new_input = $(input_html)
 				new_input.find('label').attr('for','field_mapping['+key+']').text(key)
 				new_input.find('textarea').attr('name','field_mapping['+key+']').val(value)
 				new_input.find('.remove').click(function(){
@@ -54,7 +54,7 @@
 				url: appq_ajax.url,
 				data: data,
 				success: function(msg) {
-					toastr.success('Tracker settings updated!');
+					toastr.success(__x('Tracker settings updated!', "Integration Center available fields modal error", "appq-integration-center"));
 					location.reload();
 				}
 			});
@@ -87,7 +87,7 @@
 				data: data,
 				success: function(msg) {
 					
-					toastr.success('Field added!');
+					toastr.success(__x('Field added!', "Integration Center available fields modal error", "appq-integration-center"));
 					submit_btn.html(submit_btn_html);
 					var template = wp.template("field_mapping_row");
 					var output = template(msg.data);
@@ -146,9 +146,9 @@
 				url: appq_ajax.url,
 				data: data,
 				success: function(msg) {
-					toastr.success('Field deleted!');
+					toastr.success(__x('Field deleted!', "Integration Center available fields modal error", "appq-integration-center"));
 					submit_btn.html(submit_btn_html);
-					field_list_wrap.find(`[data-row="${msg.data}"]`).remove();
+					field_list_wrap.find('[data-row="${msg.data}"]').remove();
 					$('#delete_mapping_field_modal').modal('toggle');
 				}
 			});
