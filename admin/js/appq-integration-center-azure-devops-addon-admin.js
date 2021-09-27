@@ -1,5 +1,6 @@
 (function($) {
 	'use strict';
+	var _x =  wp.i18n._x;
 
 	$(document).ready(function() {
 		$('#azure_devops_settings .field_mapping .remove').click(function(){
