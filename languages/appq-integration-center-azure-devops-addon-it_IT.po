@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: appq-integration-center-azure-devops-addon\n"
-"POT-Creation-Date: 2021-09-17 16:01+0200\n"
-"PO-Revision-Date: 2021-09-17 16:03+0200\n"
+"POT-Creation-Date: 2021-09-28 09:20+0200\n"
+"PO-Revision-Date: 2021-09-28 09:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: AppQuality\n"
 "Language: it\n"
@@ -16,17 +16,17 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_x;_n;_e\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/js/appq-integration-center-azure-devops-addon-admin.js:57
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:58
 #: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
 msgid "Tracker settings updated!"
 msgstr "Impostazioni tracker aggiornate!"
 
-#: admin/js/appq-integration-center-azure-devops-addon-admin.js:90
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:91
 #: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
 msgid "Field added!"
 msgstr "Campo aggiunto!"
 
-#: admin/js/appq-integration-center-azure-devops-addon-admin.js:149
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:150
 #: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
 msgid "Field deleted!"
 msgstr "Campo cancellato!"
