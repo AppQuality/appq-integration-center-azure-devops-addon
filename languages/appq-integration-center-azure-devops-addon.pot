@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-09-30T11:17:00+00:00\n"
+"POT-Creation-Date: 2021-10-04T09:34:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: appq-integration-center-azure-devops-addon\n"
@@ -32,6 +32,89 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://bitbucket.org/%7B1c7dab51-4872-4f3e-96ac-11f21c44fd4b%7D/"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings.php:16
+msgid "Azure DevOps Integration Settings"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings.php:20
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:19
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:18
+msgid "Endpoint"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings.php:28
+msgctxt "integration setting"
+msgid "Personal Access Token"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings.php:45
+msgctxt "save integration settings"
+msgid "Save"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:28
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-tracker-settings.php:24
+msgid "Authentication"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:41
+msgid "Media upload"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:42
+msgctxt "allow media upload"
+msgid "Yes"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/current-setup.php:42
+msgctxt "allow media upload"
+msgid "No"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:8
+msgid "Add / Edit mapping field"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:19
+msgid "Name"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:20
+msgid "/fields/System.Title"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:26
+msgid "*Type*: {Bug.type} ..."
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:33
+msgid "Save field"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:39
+msgid "Cancel"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/edit-mapping-field-modal.php:46
+msgid "Click to copy"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:10
+msgid "Field mapping"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:12
+msgid "Add new field mapping"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:19
+msgid "Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)"
+msgstr ""
+
+#: admin/partials/appq-integration-center-azure-devops-addon-admin-settings/field-mapping.php:25
+msgid "The content you want to set the azure devops field to. {Bug.*} fields will be replaced with the bug data"
 msgstr ""
 
 #: class/class-appq-integration-center-azure-devops-api.php:101
@@ -72,4 +155,19 @@ msgstr ""
 
 #: class/class-appq-integration-center-azure-devops-api.php:315
 msgid "Generic media error"
+msgstr ""
+
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:58
+msgctxt "Integration Center available fields modal error"
+msgid "Tracker settings updated!"
+msgstr ""
+
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:91
+msgctxt "Integration Center available fields modal error"
+msgid "Field added!"
+msgstr ""
+
+#: admin/js/appq-integration-center-azure-devops-addon-admin.js:150
+msgctxt "Integration Center available fields modal error"
+msgid "Field deleted!"
 msgstr ""
