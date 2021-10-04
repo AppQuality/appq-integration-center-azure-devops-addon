@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: appq-integration-center-azure-devops-addon\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/appq-integration-"
 "center-azure-devops-addon\n"
-"POT-Creation-Date: 2021-10-04T09:34:59+00:00\n"
+"POT-Creation-Date: 2021-10-04T11:03:46+00:00\n"
 "PO-Revision-Date: 2021-10-04 11:52+0200\n"
 "Last-Translator: Luca Cannarozzo <luca.cannarozzo@app-quality.com>\n"
 "Language-Team: AppQuality\n"
@@ -170,16 +170,19 @@ msgid "Generic media error"
 msgstr "Errore generico media"
 
 #: admin/js/appq-integration-center-azure-devops-addon-admin.js:58
+#: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
 msgctxt "Integration Center available fields modal error"
 msgid "Tracker settings updated!"
 msgstr "Impostazioni tracker aggiornate!"
 
 #: admin/js/appq-integration-center-azure-devops-addon-admin.js:91
+#: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
 msgctxt "Integration Center available fields modal error"
 msgid "Field added!"
 msgstr "Campo aggiunto!"
 
 #: admin/js/appq-integration-center-azure-devops-addon-admin.js:150
+#: admin/js/dist/appq-integration-center-azure-devops-addon.min.js:1
 msgctxt "Integration Center available fields modal error"
 msgid "Field deleted!"
 msgstr "Campo cancellato!"
