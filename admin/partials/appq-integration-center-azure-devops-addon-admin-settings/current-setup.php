@@ -16,7 +16,7 @@ $project  = isset( json_decode( $campaign->bugtracker->endpoint )->project ) ? j
     <div class="col-3">
         <div>
 			<?php
-			printf( '<h6 class="text-secondary">%s</h6>', __( 'Endpoint', $this->plugin_name ) );
+			printf( '<h6 class="text-secondary">%s</h6>', __( 'Endpoint', 'appq-integration-center-azure-devops-addon' ) );
 			?>
             <span class="text-primary"><?= $endpoint ?></span>
         </div>
@@ -25,7 +25,7 @@ $project  = isset( json_decode( $campaign->bugtracker->endpoint )->project ) ? j
         <div>
 			<?php $apikey = $campaign->bugtracker->apikey; ?>
             <h6 class="text-secondary">
-				<?= __( 'Authentication', $this->plugin_name ) ?>
+				<?= __( 'Authentication', 'appq-integration-center-azure-devops-addon' ) ?>
             </h6>
             <span>
                 <span class="text-primary"><?= substr( $apikey, 0, 10 ) . str_repeat( "•", 10 ); ?></span>
@@ -38,8 +38,8 @@ $project  = isset( json_decode( $campaign->bugtracker->endpoint )->project ) ? j
     <div class="col">
         <div>
 			<?php
-			printf( '<h6 class="text-secondary">%s</h6>', __( 'Media upload', $this->plugin_name ) );
-			$madiaUploadText = isset( $campaign->bugtracker->upload_media ) && $campaign->bugtracker->upload_media == 1 ? __( 'Yes', $this->plugin_name ) : __( 'No', $this->plugin_name );
+			printf( '<h6 class="text-secondary">%s</h6>', __( 'Media upload', 'appq-integration-center-azure-devops-addon' ) );
+			$madiaUploadText = isset( $campaign->bugtracker->upload_media ) && $campaign->bugtracker->upload_media == 1 ? _x( 'Yes', 'allow media upload', 'appq-integration-center-azure-devops-addon' ) : _x( 'No', 'allow media upload', 'appq-integration-center-azure-devops-addon' );
 			?>
             <span class="text-primary"><?= $madiaUploadText ?></span>
         </div>

@@ -55,7 +55,7 @@
 				url: appq_ajax.url,
 				data: data,
 				success: function(msg) {
-					toastr.success(_x('Tracker settings updated!', "Integration Center available fields modal error", "appq-integration-center"));
+					toastr.success(_x('Tracker settings updated!', "Integration Center available fields modal error", "appq-integration-center-azure-devops-addon"));
 					location.reload();
 				}
 			});
@@ -88,7 +88,7 @@
 				data: data,
 				success: function(msg) {
 					
-					toastr.success(_x('Field added!', "Integration Center available fields modal error", "appq-integration-center"));
+					toastr.success(_x('Field added!', "Integration Center available fields modal error", "appq-integration-center-azure-devops-addon"));
 					submit_btn.html(submit_btn_html);
 					var template = wp.template("field_mapping_row");
 					var output = template(msg.data);
@@ -147,7 +147,7 @@
 				url: appq_ajax.url,
 				data: data,
 				success: function(msg) {
-					toastr.success(_x('Field deleted!', "Integration Center available fields modal error", "appq-integration-center"));
+					toastr.success(_x('Field deleted!', "Integration Center available fields modal error", "appq-integration-center-azure-devops-addon"));
 					submit_btn.html(submit_btn_html);
 					field_list_wrap.find('[data-row="${msg.data}"]').remove();
 					$('#delete_mapping_field_modal').modal('toggle');

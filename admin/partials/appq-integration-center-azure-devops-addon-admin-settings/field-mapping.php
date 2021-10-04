@@ -7,22 +7,22 @@ foreach ($api->basic_configuration as $key => $value) {
 }
 ?>
 <div class="row">
-	<div class="col-6"><?php printf('<h4 class="title py-3">%s</h4>', __('Field mapping', $this->plugin_name)); ?></div>
+	<div class="col-6"><?php printf('<h4 class="title py-3">%s</h4>', __('Field mapping', 'appq-integration-center-azure-devops-addon')); ?></div>
 	<div class="col-6 text-right actions mt-2">
-	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add_mapping_field_modal"><?php _e('Add new field mapping', $this->plugin_name); ?></button>
+	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add_mapping_field_modal"><?php _e('Add new field mapping', 'appq-integration-center-azure-devops-addon'); ?></button>
 	</div>
 </div>
 <div class="row mb-2">
     <div class="col-3">
 			<small>
 				<strong><?= __('Name', $this->plugin_name); ?></strong>
-				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)', $this->plugin_name) ?>"></i>
+				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)', 'appq-integration-center-azure-devops-addon') ?>"></i>
 			</small>
     </div>
     <div class="col-7">
 			<small>
 				<strong><?= __('Content', $this->plugin_name); ?></strong>
-				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('The content you want to set the azure devops field to. {Bug.*} fields will be replaced with the bug data', $this->plugin_name) ?>"></i>
+				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('The content you want to set the azure devops field to. {Bug.*} fields will be replaced with the bug data', 'appq-integration-center-azure-devops-addon') ?>"></i>
 			</small>
     </div>
 </div>

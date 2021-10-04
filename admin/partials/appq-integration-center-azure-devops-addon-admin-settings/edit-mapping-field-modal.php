@@ -5,7 +5,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div style="z-index: 99999;" class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="add_mapping_field_modal_label"><?php _e('Add / Edit mapping field', $this->plugin_name); ?></h5>
+        <h5 class="modal-title" id="add_mapping_field_modal_label"><?php _e('Add / Edit mapping field', 'appq-integration-center-azure-devops-addon'); ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,31 +16,34 @@
             <form id="azure-devops_mapping_field">
               <div class="form-group">
                 <?php
-                printf('<label for="custom_mapping_name">%s</label>', __('Name', $this->plugin_name));
-                printf('<input type="text" class="form-control" name="name" id="custom_mapping_name" placeholder="%s">', __('/fields/System.Title', $this->plugin_name));
+                printf('<label for="custom_mapping_name">%s</label>', __('Name', 'appq-integration-center-azure-devops-addon'));
+                printf('<input type="text" class="form-control" name="name" id="custom_mapping_name" placeholder="%s">', __('/fields/System.Title', 'appq-integration-center-azure-devops-addon'));
                 ?>
               </div>
               <div class="form-group">
                 <?php
-                printf('<label for="custom_mapping_content">%s</label>', __('Target field', $this->plugin_name));
-                printf('<textarea class="form-control" name="value" id="custom_mapping_content" placeholder="%s"></textarea>', __('*Type*: {Bug.type} ...', $this->plugin_name));
+                printf('<label for="custom_mapping_content">%s</label>', __('Target field', 'allow media upload'));
+                printf('<textarea class="form-control" name="value" id="custom_mapping_content" placeholder="%s"></textarea>', __('*Type*: {Bug.type} ...', 'appq-integration-center-azure-devops-addon'));
                 ?>
               </div>
               <div class="row mt-5 pb-4">
                 <div class="col-6 col-lg-4 offset-lg-2 text-right">
                   <?php printf(
                     '<button type="submit" id="add_new_mapping_field" class="btn btn-primary">%s</button>',
-                    __('Save field', $this->plugin_name)
+                    __('Save field', 'appq-integration-center-azure-devops-addon')
                   ); ?>
                 </div>
                 <div class="col-6 col-lg-4">
-                  <?php printf('<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="%1$s">%1$s</button>', __('Cancel', $this->plugin_name)); ?>
+                  <?php 
+				  printf('<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="%1$s">%1$s</button>', 
+				  __('Cancel', 'appq-integration-center-azure-devops-addon')); 
+				  ?>
                 </div>
               </div>
             </form>
           </div>
           <div class="col-4" style="max-height:350px;overflow-y:scroll">
-            <h6 class="text-center">Click to copy</h6>
+            <h6 class="text-center"><?= __('Click to copy', 'appq-integration-center-azure-devops-addon'); ?></h6>
             <ul style="list-style: none;">
             <?php foreach ($api->mappings as $key => $value): ?>
               <li class="mb-1" title="<?= esc_attr($value['description']) ?>">

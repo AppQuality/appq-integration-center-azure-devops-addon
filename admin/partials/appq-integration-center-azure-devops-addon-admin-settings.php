@@ -13,11 +13,11 @@
  */
 ?>
 <form id="azure_devops_settings" class="container-fluid">
-	<h3> Azure DevOps Integration Settings</h3>
+	<h3> <?= __('Azure DevOps Integration Settings', 'appq-integration-center-azure-devops-addon'); ?></h3>
     <div class="row">
         <div class="col-sm-4">
             <div class="form-group row">
-                <label for="azure_devops_endpoint" class="col-sm-2 col-form-label">Endpoint</label>
+                <label for="azure_devops_endpoint" class="col-sm-2 col-form-label"><?= __('Endpoint', 'appq-integration-center-azure-devops-addon'); ?></label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="azure_devops_endpoint" id="azure_devops_endpoint" value="<?= !empty($config) ? $config->endpoint : ''?>" placeholder="https://dev.azure.com/{organization}/{project}/_apis">
                 </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="col-sm-8">
             <div class="form-group row">
-                <label for="azure_devops_pat" class="col-sm-3 col-form-label">Personal Access Token</label>
+                <label for="azure_devops_pat" class="col-sm-3 col-form-label"><?= _x('Personal Access Token', 'integration setting', 'appq-integration-center-azure-devops-addon'); ?></label>
                 <div class="col-sm-9">
                     <input type="password" class="form-control" name="azure_devops_apikey" id="azure_devops_apikey" value="<?= !empty($config) ? $config->apikey : ''?>"  placeholder="••••••••••">
                 </div>
@@ -42,6 +42,6 @@
 		'campaign_id' => $campaign_id
 	)) ?>
 	<div class="row">
-		<button type="button" class="save col-sm-2 offset-sm-10 btn btn-primary">Save</button>
+		<button type="button" class="save col-sm-2 offset-sm-10 btn btn-primary"><?= _x('Save', 'save integration settings', 'appq-integration-center-azure-devops-addon'); ?></button>
 	</div>
 </form>
