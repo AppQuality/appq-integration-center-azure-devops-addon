@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://bitbucket.org/%7B1c7dab51-4872-4f3e-96ac-11f21c44fd4b%7D/
+ * @link              https://github.com/AppQuality/
  * @since             1.0.0
  * @package           Appq_Integration_Center_Azure_Devops_Addon
  *
@@ -16,9 +16,9 @@
  * Plugin Name:       Integration Center - Azure DevOps
  * Plugin URI:        bitbucket/appq-integration-center-azure-devops-addon
  * Description:       Extend Integration Center with Azure DevOps
- * Version:           1.0.0
- * Author:            Davide Bizzi
- * Author URI:        https://bitbucket.org/%7B1c7dab51-4872-4f3e-96ac-11f21c44fd4b%7D/
+* Version:           1.1.3
+ * Author:            Unguess Team
+ * Author URI:        https://github.com/AppQuality/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       appq-integration-center-azure-devops-addon
