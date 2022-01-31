@@ -34,10 +34,9 @@
                   ); ?>
                 </div>
                 <div class="col-6 col-lg-4">
-                  <?php 
-				  printf('<button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="%1$s">%1$s</button>', 
-				  __('Cancel', 'appq-integration-center-azure-devops-addon')); 
-				  ?>
+                  <button type="button" class="btn btn-link" data-dismiss="modal">
+                    <?= __('Cancel', 'appq-integration-center') ?>
+                  </button>
                 </div>
               </div>
             </form>
@@ -45,11 +44,11 @@
           <div class="col-4" style="max-height:350px;overflow-y:scroll">
             <h6 class="text-center"><?= __('Click to copy', 'appq-integration-center-azure-devops-addon'); ?></h6>
             <ul style="list-style: none;">
-            <?php foreach ($api->mappings as $key => $value): ?>
-              <li class="mb-1" title="<?= esc_attr($value['description']) ?>">
-                <button style="text-transform: initial;" data-copy-to-clipboard class="btn btn-block btn-secondary"><?= $key ?></button>
-              </li>
-            <?php endforeach; ?>
+              <?php foreach ($api->mappings as $key => $value) : ?>
+                <li class="mb-1" title="<?= esc_attr($value['description']) ?>">
+                  <button style="text-transform: initial;" data-copy-to-clipboard class="btn btn-block btn-secondary"><?= $key ?></button>
+                </li>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>

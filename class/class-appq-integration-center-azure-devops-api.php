@@ -83,7 +83,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	 */
 	public function send_issue($bug)
 	{
-		global $wpdb;
+		global $tbdb;
 		$data = $this->map_fields($bug);
 		$issue_type = $this->basic_configuration['/fields/System.WorkItemType'];
 		$url = $this->get_apiurl() . '/wit/workitems/$' . $issue_type . '?api-version=' . $this->api_version;
@@ -111,7 +111,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 
 		if (property_exists($res, 'fields'))
 		{
-			$wpdb->insert($wpdb->prefix . 'appq_integration_center_bugs', array(
+			$tbdb->insert($tbdb->prefix . 'appq_integration_center_bugs', array(
 				'bug_id' => $bug->id,
 				'bugtracker_id' => $res->id,
 				'integration' => $this->integration['slug']
@@ -122,7 +122,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 					'status' => true,
 					'message' => ''
 				);
-				$media =  $wpdb->get_col($wpdb->prepare('SELECT location FROM ' . $wpdb->prefix . 'appq_evd_bug_media WHERE bug_id = %d', $bug->id));
+				$media =  $tbdb->get_col($tbdb->prepare('SELECT location FROM ' . $tbdb->prefix . 'appq_evd_bug_media WHERE bug_id = %d', $bug->id));
 				
 				
 				$media_error = false;
@@ -169,7 +169,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 	 * @date                2020-06-08T10:35:32+020
 	 */
 	public function delete_issue($bugtracker_id) {
-		global $wpdb;
+		global $tbdb;
 		if (empty($bugtracker_id)) {
 			return array(
 				'status' => false,
@@ -220,7 +220,7 @@ class AzureDevOpsRestApi extends IntegrationCenterRestApi
 		}
 		
 		if ($delete_from_db) {
-			$wpdb->delete($wpdb->prefix . 'appq_integration_center_bugs',array(
+			$tbdb->delete($tbdb->prefix . 'appq_integration_center_bugs',array(
 				'bugtracker_id' => $bugtracker_id
 			));
 			return array(
