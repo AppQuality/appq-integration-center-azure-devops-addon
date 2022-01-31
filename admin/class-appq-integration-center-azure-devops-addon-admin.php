@@ -80,7 +80,7 @@ class Appq_Integration_Center_Azure_Devops_Addon_Admin {
 		{
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/dist/appq-integration-center-azure-devops-addon.min.js', array( 'jquery' ), $this->version, false );
             wp_set_script_translations($this->plugin_name, 'appq-integration-center-azure-devops-addon', APPQ_INTEGRATION_CENTER_AZURE_DEVOPS_PATH . 'languages');
-			wp_localize_script( $this->plugin_name, 'custom_object',array(
+			wp_localize_script( $this->plugin_name, 'integration_center_obj',array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ) 
 			) );
 		}
@@ -137,7 +137,7 @@ class Appq_Integration_Center_Azure_Devops_Addon_Admin {
 	 * @var $slug
 	 */
 	public function partial($slug,$variables = false) {
-		if ($variables) {
+		if (is_array($variables)) {
 			foreach ($variables as $key => $value) {
 				${$key} = $value;
 			}

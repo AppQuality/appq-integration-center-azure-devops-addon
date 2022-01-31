@@ -47,12 +47,12 @@
 			});
 			data.push({
 			  name: "nonce",
-			  value: appq_ajax.nonce,
+			  value: integration_center_obj.nonce,
 			});
 			jQuery.ajax({
 				type: "post",
 				dataType: "json",
-				url: appq_ajax.url,
+				url: integration_center_obj.ajax_url,
 				data: data,
 				success: function(msg) {
 					toastr.success(_x('Tracker settings updated!', "Integration Center available fields modal error", "appq-integration-center-azure-devops-addon"));
@@ -79,12 +79,12 @@
 			});
 			data.push({
 			  name: "nonce",
-			  value: appq_ajax.nonce,
+			  value: integration_center_obj.nonce,
 			});
 			jQuery.ajax({
 				type: "post",
 				dataType: "json",
-				url: appq_ajax.url,
+				url: integration_center_obj.ajax_url,
 				data: data,
 				success: function(msg) {
 					
@@ -139,12 +139,12 @@
 			});
 			data.push({
 			  name: "nonce",
-			  value: appq_ajax.nonce,
+			  value: integration_center_obj.nonce,
 			});
 			jQuery.ajax({
 				type: "post",
 				dataType: "json",
-				url: appq_ajax.url,
+				url: integration_center_obj.ajax_url,
 				data: data,
 				success: function(msg) {
 					toastr.success(_x('Field deleted!', "Integration Center available fields modal error", "appq-integration-center-azure-devops-addon"));
