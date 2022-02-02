@@ -7,38 +7,47 @@ foreach ($api->basic_configuration as $key => $value) {
 }
 ?>
 <div class="row">
-	<div class="col-6"><?php printf('<h4 class="title py-3">%s</h4>', __('Field mapping', 'appq-integration-center-azure-devops-addon')); ?></div>
-	<div class="col-6 text-right actions mt-2">
-	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#add_mapping_field_modal"><?php _e('Add new field mapping', 'appq-integration-center-azure-devops-addon'); ?></button>
+	<div class="col-sm-6 col-md-4">
+		<h4 class="text-primary py-3"><?=  __('Field mapping', 'appq-integration-center') ?></h4>	
+	</div>
+	<div class="col-sm-6 col-md-8 text-right actions">
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary-light" data-toggle="modal" data-target="#add_mapping_field_modal"><?= __('Add new field mapping', 'appq-integration-center-jira-addon'); ?></button>
+		</div>
 	</div>
 </div>
-<div class="row mb-2">
-    <div class="col-3">
-			<small>
-				<strong><?= __('Name', $this->plugin_name); ?></strong>
-				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)', 'appq-integration-center-azure-devops-addon') ?>"></i>
-			</small>
-    </div>
-    <div class="col-7">
-			<small>
-				<strong><?= __('Content', $this->plugin_name); ?></strong>
-				<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('The content you want to set the azure devops field to. {Bug.*} fields will be replaced with the bug data', 'appq-integration-center-azure-devops-addon') ?>"></i>
-			</small>
-    </div>
+<div class="row">
+	<div class="col-sm-12">
+		<table class="table table-banded">
+			<thead>
+				<tr>
+					<th>
+						<?= __("Name", 'appq-integration-center-jira-addon'); ?>
+						<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('Azure DevOps field name. Use slash for subfields (e.g. /fields/System.State)', 'appq-integration-center-azure-devops-addon') ?>"></i>
+					</th>
+					<th class="text-center">
+						<?= __("Content", 'appq-integration-center-jira-addon'); ?>
+						<i class="fa fa-question-circle" data-toggle="tooltip" title="<?= __('The content you want to set the azure devops field to. {Bug.*} fields will be replaced with the bug data', 'appq-integration-center-azure-devops-addon') ?>"></i>
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody class="fields-list">
+				<?php foreach ($field_mapping as $key => $item) {
+					$content = esc_attr($content);
+					$this->partial('settings/field-mapping-row',array(
+						'_key' => esc_attr($key),  
+						'item' => array(
+							'value' => $content
+						)
+					));
+				}
+				?>
+			</tbody>
+		</table>
+	</div>
 </div>
-<div class="fields-list">
-<?php 
-foreach ($field_mapping as $key => $content) {
-	$content = esc_attr($content);
-	$this->partial('settings/field-mapping-row',array(
-		'_key' => esc_attr($key),  
-		'item' => array(
-			'value' => $content
-		)
-	)); 
-}
-?>
-</div>
+
 <script type="text/html" id ="tmpl-field_mapping_row">
 <?php $this->partial('settings/field-mapping-row',array(
 	'_key' => '{{data.key}}',
