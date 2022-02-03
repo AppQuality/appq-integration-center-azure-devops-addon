@@ -34,7 +34,7 @@ foreach ($api->basic_configuration as $key => $value) {
 			</thead>
 			<tbody class="fields-list">
 				<?php foreach ($field_mapping as $key => $item) {
-					$content = esc_attr($content);
+					$content = esc_attr($item);
 					$this->partial('settings/field-mapping-row',array(
 						'_key' => esc_attr($key),  
 						'item' => array(

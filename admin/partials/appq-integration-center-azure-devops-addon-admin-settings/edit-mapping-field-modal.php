@@ -1,58 +1,58 @@
 <?php $api = new IntegrationCenterRestApi($campaign_id, null, null); ?>
 
 <!-- Modal -->
-<div class="modal" style="z-index: 99999;" id="add_mapping_field_modal" tabindex="-1" role="dialog" aria-labelledby="add_mapping_field_modal_label" aria-hidden="true">
+<div class="modal" id="add_mapping_field_modal" tabindex="-1" role="dialog" aria-labelledby="add_mapping_field_modal_label" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
-    <div style="z-index: 99999;" class="modal-content">
+    <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="add_mapping_field_modal_label"><?php _e('Add / Edit mapping field', 'appq-integration-center-azure-devops-addon'); ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <h4 class="modal-title" id="add_mapping_field_modal_label">
+          <?php _e('Add / Edit mapping field', 'appq-integration-center-azure-devops-addon'); ?>
+        </h4>
       </div>
-      <div class="modal-body px-4">
-        <div class="row">
-          <div class="col-8">
-            <form id="azure-devops_mapping_field">
+      <form id="azure-devops_mapping_field">
+        <div class="modal-body px-4">
+          <div class="row">
+            <div class="col-sm-8">
               <div class="form-group">
-                <?php
-                printf('<label for="custom_mapping_name">%s</label>', __('Name', 'appq-integration-center-azure-devops-addon'));
-                printf('<input type="text" class="form-control" name="name" id="custom_mapping_name" placeholder="%s">', __('/fields/System.Title', 'appq-integration-center-azure-devops-addon'));
-                ?>
+                <label for="custom_mapping_name"><?= __('Name', 'appq-integration-center-azure-devops-addon'); ?></label>
+                <input type="text" class="form-control" name="name" id="custom_mapping_name" placeholder="<?= __('/fields/System.Title', 'appq-integration-center-azure-devops-addon'); ?>">
               </div>
               <div class="form-group">
-                <?php
-                printf('<label for="custom_mapping_content">%s</label>', __('Target field', 'allow media upload'));
-                printf('<textarea class="form-control" name="value" id="custom_mapping_content" placeholder="%s"></textarea>', __('*Type*: {Bug.type} ...', 'appq-integration-center-azure-devops-addon'));
-                ?>
+                <label for="custom_mapping_content"><?= __('Target field', 'allow media upload'); ?></label>
+                <textarea class="form-control" name="value" id="custom_mapping_content" placeholder="<?= __('*Type*: {Bug.type} ...', 'appq-integration-center-azure-devops-addon'); ?>"></textarea>
               </div>
-              <div class="row mt-5 pb-4">
-                <div class="col-6 col-lg-4 offset-lg-2 text-right">
-                  <?php printf(
-                    '<button type="submit" id="add_new_mapping_field" class="btn btn-primary">%s</button>',
-                    __('Save field', 'appq-integration-center-azure-devops-addon')
-                  ); ?>
-                </div>
-                <div class="col-6 col-lg-4">
-                  <button type="button" class="btn btn-link" data-dismiss="modal">
-                    <?= __('Cancel', 'appq-integration-center') ?>
-                  </button>
-                </div>
-              </div>
-            </form>
+            </div>
+            <div class="col-sm-4" style="max-height:350px;">
+              <h6 class="text-center"><?= __('Click to copy', 'appq-integration-center-azure-devops-addon'); ?></h6>
+              <ul class="list divider-full-bleed scroll height-6">
+                <?php foreach ($api->mappings as $key => $value) : ?>
+                  <li class="tile" title="<?= esc_attr($value['description']) ?>">
+                    <a class="tile-content ink-reaction copy-to-clipboard" data-clipboard-text="<?= $key ?>">
+                      <div class="tile-text" style="font-size: 13px;">
+                        <?= $key ?>
+                      </div>
+                    </a>
+                    <a class="btn btn-flat ink-reaction copy-to-clipboard btn-sm" data-clipboard-text="<?= $key ?>">
+                      <i class="fa fa-copy"></i>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
           </div>
-          <div class="col-4" style="max-height:350px;overflow-y:scroll">
-            <h6 class="text-center"><?= __('Click to copy', 'appq-integration-center-azure-devops-addon'); ?></h6>
-            <ul style="list-style: none;">
-              <?php foreach ($api->mappings as $key => $value) : ?>
-                <li class="mb-1" title="<?= esc_attr($value['description']) ?>">
-                  <button style="text-transform: initial;" data-copy-to-clipboard class="btn btn-block btn-secondary"><?= $key ?></button>
-                </li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
+        </div><!-- END .modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">
+            <?= __('Cancel', 'appq-integration-center-azure-devops-addon') ?>
+          </button>
+          <button type="submit" id="add_new_mapping_field" class="btn btn-primary">
+            <?= __('Save field', 'appq-integration-center-azure-devops-addon'); ?>
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>
